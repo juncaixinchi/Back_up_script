@@ -60,9 +60,10 @@ chmod a+x ~/bin/Script_backup.sh
 
 crontab -e
 
-\#输入
-3：50运行Script_backup.sh）
+\#设定3：50运行Script_backup.sh
+
+50 3 * * * ~/bin/Script_backup.sh
+
+\#然后重启crond，就可以实现每天定时备份了
 
 crond restart # need root
-
-\#然后就可以实现每天定时备份了
