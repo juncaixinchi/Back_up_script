@@ -36,8 +36,10 @@ cat ~/.ssh/id_rsa.pub  >> ~/.ssh/authorized_keys
 ```
 ssh user@10.157.31.20
 // 不需要密码, 登录成功
-// 如果需要登录其他机器，添加id_rsa.pub内容到相应authorized_keys文件内即可
 ```
+
+如果需要登录其他机器，添加id_rsa.pub内容到相应authorized_keys文件内即可
+
 ##备份程序：
 
 将远程的NAMD文件夹备份到本地BACKUP_DIR内
@@ -60,20 +62,26 @@ rsync -ave ssh lixw@10.157.31.20:~/NAMD ~/BACKUP_DIR/BACKUP.0
 
 ```
 chmod a+x ~/bin/Script_backup.sh
-// 可直接运行 Script_backup.sh 进行备份，即可将远程的NAMD文件夹备份到本地BACKUP_DIR内
 ```
+
+可直接运行 Script_backup.sh 进行备份，即可将远程的NAMD文件夹备份到本地BACKUP_DIR内
 
 #设置自动运行
 
 利用系统自带的crond程序自动运行备份命令
+
 ```
 crontab -e
 ```
+
 设定3：50运行Script_backup.sh
+
 ```
 50 3 * * * ~/bin/Script_backup.sh
 ```
+
 然后重启crond，就可以实现每天定时备份了
+
 ```
 crond restart # need root
 ```
